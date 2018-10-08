@@ -11,10 +11,10 @@ public class ProceduralGrid : MonoBehaviour {
     // grid settings
     public float cellSize = 1;
     public Vector3 gridOffset;
-    public int gridSizeX;
-    public int gridSizeY;
+    private int gridSizeX;
+    private int gridSizeY;
 
-	void Awake () {
+    void Awake () {
         mesh = GetComponent<MeshFilter>().mesh;
 	}
 	
@@ -24,6 +24,9 @@ public class ProceduralGrid : MonoBehaviour {
 	}
 
     void MakeDiscreteProceduralGrid() {
+        gridSizeX = Random.Range(1, 5);
+        gridSizeY = Random.Range(1, 5);
+
         // set array sizes
         // need a minimum of 4 vertices to make a quad so multiply gridSize by 4
         vertices = new Vector3[gridSizeX * gridSizeY * 4];
